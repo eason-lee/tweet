@@ -1,0 +1,198 @@
+
+body{
+    background-color: rgba(56, 125, 112, 0.16);
+}
+
+.my-navbar-color {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(173, 166, 166, 0.29);
+}
+
+.my-container {
+    display: flex;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.my-connect {
+    flex-grow: 3;
+    margin: 25px;
+    width: 23%;
+}
+
+.my-connects {
+    flex-grow: 3;
+    margin: 25px;
+    width: 23%;
+}
+
+.my-content-tweet {
+    background: #f5f5f5;
+    margin: 18px;
+    padding: 19px;
+    width: 588px;
+}
+.my-sidebar {
+    flex-grow: 1;
+    height: 400px;
+    margin: 44px;
+    margin-left: 353px;
+}
+
+.my-tweet-add {
+    padding-left: 42px;
+    width: 631px;
+}
+
+.my-tweet-add-buttons {
+    display: flex;
+    margin-top: 10px;
+}
+
+.my-tweet-add-button {
+    width: 121px;
+    margin-left: 209px;
+}
+
+.my-timeline-sidebar {
+    flex-grow: 2;
+    padding-top: 57px;
+}
+
+.my-div-comment {
+    display: flex;
+}
+
+
+.my-tweet-portrait {
+    width:100%;
+    height: 84px;
+}
+
+.my-tweet-nicheng {
+    position: relative;
+    left: 79px;
+    bottom: 66px;
+}
+
+.my-tweet-time {
+    position: relative;
+    top: 18px;
+    left: -1px;
+}
+
+.my-tweet-contents {
+    margin: auto;
+    font-size: 18px;
+    width: 70%;
+}
+
+.my-tweet-content {
+    margin: -35px 0 55px;
+}
+
+.my-tweet-image {
+    display: inline;
+    position: relative;
+    bottom: 18px;
+    left: 0;
+    top: -2px;
+}
+.my-tweet-buttons {
+    margin: -1px;
+    position: relative;
+    bottom: -18px;
+}
+
+.my-button {
+    margin-right: 0;
+    width: 135px;
+    border-radius: 0;
+    color: #8c8c8c;
+    border-color: #f5f5f5;
+    background-color: #f5f5f5;
+}
+
+.btn-hui{
+    color: white;
+    background-color: #2ca99c;
+    border-color: #2ca99c;
+}
+
+.my-image{
+    width: 125px;
+    height: 125px;
+}
+
+.img-portrait {
+    border-radius: 16%;
+    width:60px;
+    height:60px;
+}
+
+.my-input-warning {
+    background-color: white;
+    transition: 0.5s;
+}
+
+.my-tweet-transmit {
+    background: #f5f5f5;
+    margin: 18px;
+    width: 588px;
+    margin-bottom: 53px;
+}
+
+.my-transmit-top {
+    background-color: white;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+
+
+.my-tweet-transmit-portrait-2 {
+    position: relative;
+    top: 61px;
+    left: 20px;
+}
+
+.my-transmit-bottom {
+    background-color: white;
+    position: relative;
+    top: 34px;
+}
+
+.my-transmit-button {
+    margin-right: 0;
+    width: 291px;
+    border-radius: 0;
+    color: #8c8c8c;
+    border-color: white;
+    background-color: white;
+
+}
+
+.my-tweet-transmit-content {
+    padding-left: 77px;
+    position: relative;
+    top: -41px;
+    font-size: 18px;
+}
+
+.my-transmit-tweet-contents {
+    margin: auto;
+    font-size: 18px;
+    width: 70%;
+    padding-top: 15px;
+    padding-left: 9px;
+}
+
+.my-selftweet-button {
+    display: inline-flex;
+    position: relative;
+    left: -15px;
+}
+
+#id-input-nicheng {
+    width: 266px;
+}

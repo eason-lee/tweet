@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 微博广场 </title>
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/arttemplate.js"></script>
+    <script src="/static/js/mytimeago.js"></script>
+    <script src="/static/js/addcomment.js"></script>
+    <script src="/static/js/addguanzhu.js"></script>
+    <script src="/static/js/addpraise.js"></script>
+    <script src="/static/js/addtweet.js"></script>
+    <script src="/static/js/bindactions.js"></script>
+    <script src="/static/js/deletetweet.js"></script>
+    <script src="/static/js/transmittweet.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/mycss.css">
+    <script id="transmitTweetTemplate" type="text/html">
+        {% raw %}
+        <div id="id-div-tweet-body" class="my-tweet-transmit">
+            <div class="my-transmit-top">
+                <div class="my-tweet-transmit-portrait-1">
+                    <img src={{ dportrait }} data-id="{{ did }}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
+                    <h4 class="my-tweet-nicheng">{{ dnicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ dtime }}</cite></footer></small> </h4>
+                </div>
+                    <p class="my-tweet-transmit-content"> {{ dcontent }} <p>
+            </div>
+            <div class="my-transmit-content-tweet">
+                  <div class="my-tweet-transmit-portrait-2">
+                        <h4 class="my-tweet-nicheng">{{ tnicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ ttime }}</cite></footer></small> </h4>
+                  </div>
+                  <div class="my-transmit-tweet-contents">
+                      <p class=".my-tweet-content"> {{ tcontent }} <p>
+                      <div class="my-tweet-image">
+                          {{each timage as value i}}
+                              <img src={{value}} id={{i}} class="my-image">
+                          {{/each}}
+                      </div>
+                  </div>
+                  <div class="my-tweet-buttons">
+                      <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+                      <button  class=" my-button button btn btn-success"  data-id="{{tid}}" value="{{tpraise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ tpraise }} </button>
+                      <button  class=" my-button button btn btn-info"  data-id="{{tid}}"  data-target="#myModal"><span class="glyphicon glyphicon-new-window"></span> {{ ttransmit }} </button>
+                      <button  class="button-tweet-comment my-button button btn btn-primary" data-id="{{tid}}" data-toggle="collapse" data-target="#collapseExample-{{tid}}" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-comment"></span> {{ tcomments }} </button>
+                  </div>
+                </div>
+                <div class="my-transmit-bottom">
+                    <button class='button-tweet-edit my-transmit-button button btn btn-info' data-id='{{did}}'>编辑</button>
+                    <button class='button-tweet-delete my-transmit-button button btn btn-danger' data-id="{{did}}">删除</button>
+                </div>
+            </div>
+        {% endraw %}
+    </script>
+</head>
+<body >
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li id="id-li-nav-1"><a href="/timeline"><span class="glyphicon glyphicon-user"></span> 个人主页 </a></li>
+        <li id="id-li-nav-2"><a href="/plaza"><span class="glyphicon glyphicon-globe"></span> 微博广场 </a></li>
+        <li id="id-li-nav-3"><a href="/accounts"><span class="glyphicon glyphicon-cog"></span> 帐号设置 </a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">关注的人</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的评论</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout">退出</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="找你想要的">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="my-container">
+    <div class="my-connect">
+        {% for t in tweets %}
+            {% if t.transmit == '0' %}
+                <div id="id-div-tweet-body" class="my-content-tweet">
+                      <div class="my-tweet-portrait">
+                            <img src={{t.user.portrait}} data-id="{{t.user_id}}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
+                            <h4 class="my-tweet-nicheng">{{ t.user.nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.created_time|format_time }}</cite></footer></small> </h4>
+                      </div>
+                      <div class="my-tweet-contents">
+                          <p class=".my-tweet-content"> {{ t.content }} <p>
+                          <div class="my-tweet-image">
+                          {% for i in t.timage %}
+                              {% if i == '' %}
+                                  <img src=""  class="my-image">
+                              {% else %}
+                                  <img src={{i}}  class="my-image">
+                              {% endif %}
+                          {% endfor %}
+                          </div>
+                      </div>
+                      <div class="my-tweet-buttons">
+                          <div class="my-div-comment">
+                              <div class="collapse" id="collapseExample-{{t.id}}">
+                                  <div class="well">
+                                      <input id="id-input-comment-{{t.id}}"  autocomplete="off" class="my-input-warning" type="text">
+                                      <button class='calss-button-comment my-button button btn btn-success'data-id='{{t.id}}'>发布</button>
+                                      <div id = "id-div-comments-{{t.id}}">
+                                          {% for c in t.comments %}
+                                              <p class="p-name">{{t.user.nicheng}} - {{c.created_time|format_time}} </p>
+                                              <p> {{c.comment}} </p>
+                                              <br>
+                                          {% endfor %}
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                          {% if t.user_id == user.id %}
+                              <div class="my-selftweet-button">
+                                  <button class='button-tweet-edit my-transmit-button button btn btn-info'data-id='{{t.id}}'>编辑</button>
+                                  <button class='button-tweet-delete my-transmit-button button btn btn-danger'data-id="{{t.id}}">删除</button>
+                              </div>
+                          {% else %}
+                              <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+                              <button  class="button-tweet-praise my-button button btn btn-success"  data-id="{{t.id}}" value="{{t.praise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ t.praise }} </button>
+                              <button  class="button-tweet-transmit my-button button btn btn-info"  data-id="{{t.id}}" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-new-window"></span> {{ t.transmit_count }} </button>
+                              <button  class="button-tweet-comment my-button button btn btn-primary" data-id="{{t.id}}" data-toggle="collapse" data-target="#collapseExample-{{t.id}}" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-comment"> </span> {{ t.comments_count }} </button>
+                          {% endif %}
+                      </div>
+                    </div>
+                {% else %}
+                <div id="id-div-tweet-body" class="my-tweet-transmit">
+                    <div class="my-transmit-top">
+                        <div class="my-tweet-transmit-portrait-1">
+                            <img src={{t.user.portrait}} data-id="{{t.user_id}}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
+                            <h4 class="my-tweet-nicheng">{{ t.user.nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.created_time|format_time }}</cite></footer></small> </h4>
+                        </div>
+                            <p class="my-tweet-transmit-content"> {{t.content }} <p>
+                    </div>
+                    <div class="my-transmit-content-tweet">
+                          <div class="my-tweet-transmit-portrait-2">
+                                <h4 class="my-tweet-nicheng">{{ t.transmit_nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.tweet.created_time|format_time }}</cite></footer></small> </h4>
+                          </div>
+                          <div class="my-transmit-tweet-contents">
+                              <p class=".my-tweet-content"> {{ t.tweet.content }} <p>
+                              <div class="my-tweet-image">
+                                  {% for i in t.timage %}
+                                      {% if i == '' %}
+                                          <img src=""  class="my-image">
+                                      {% else %}
+                                          <img src={{i}}  class="my-image">
+                                      {% endif %}
+                                  {% endfor %}
+                              </div>
+                          </div>
+                          <div class="my-tweet-buttons">
+                              <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+                              <button  class=" my-button button btn btn-success"  data-id="{{t.id}}" value="{{t.praise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ t.praise }} </button>
+                              <button  class=" my-button button btn btn-info"  data-id="{{t.id}}"  data-target="#myModal"><span class="glyphicon glyphicon-new-window"></span> {{ t.transmit_count }} </button>
+                              <button  class="button-tweet-comment my-button button btn btn-primary" data-id="{{t.id}}" data-toggle="collapse" data-target="#collapseExample-{{t.id}}" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-comment"></span> {{ t.comments_count }} </button>
+                          </div>
+                        </div>
+                        <div class="my-transmit-bottom">
+                            <button class='button-tweet-edit my-transmit-button button btn btn-info' data-id='{{t.id}}'>编辑</button>
+                            <button class='button-tweet-delete my-transmit-button button btn btn-danger' data-id="{{t.id}}">删除</button>
+                        </div>
+                    </div>
+                {% endif %}
+        {% endfor %}
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm">
+            <button  class="class-button-guanzhu btn btn-primary" data-id="" type="button" >关注</button>
+            <button  class="class-button-qxguanzhu btn btn-primary" data-id="" type="button" >取消关注</button>
+            </div>
+        </div>
+        <!-- 转发模态框 -->
+        <div id="myModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">你要转发这个微博</h4>
+              </div>
+              <div class="modal-body">
+                <textarea id="id-input-transmit" class="form-control" rows="3" placeholder="你有什么想说的..."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="id-button-transmit-submit" class=" btn btn-primary" type="button" >转发</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="my-sidebar">
+        <div calss="my-sidebar-image">
+            <img src={{user.portrait}} alt="..." width="150" height="150" class="img-thumbnail">
+        </div>
+        <div class="my-sidebar-connect">
+            <p> <em> {{user.nicheng}} </em></p>
+            <p> <em>关注：{{ user.guanzhu_count }}  粉丝: {{ user.fans_count }} </em></p>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
