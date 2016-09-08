@@ -39,7 +39,7 @@ def plaza_view():
         t.transmit_count = t.transmit_count()
         t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
-        if t.comments !=  [] and t.comments != None:
+        if len(t.comments) > 5:
             t.comments = next(cutList(t.comments))
         if t.transmit == '0':
             t.timage = t.list_image()
@@ -74,7 +74,7 @@ def user_timeline_view():
         t.transmit_count = t.transmit_count()
         t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
-        if t.comments != [] and t.comments != None:
+        if len(t.comments) > 5:
             t.comments = next(cutList(t.comments))
         if t.transmit != '0':
             tweet_id = int(t.transmit)
