@@ -16,7 +16,7 @@ from flask import redirect
 def tweet_add():
     u = current_user()
     form = request.get_json()
-    log('添加微博',form)
+    # log('添加微博',form)
     if 'image' in form:
         image = form['image']
         form['image'] = '\n'.join(image)
@@ -60,7 +60,7 @@ def tweet_addComment(tweet_id):
     c = Comment(form)
     c.tweet = t
     c.save()
-    print('comment',c.comment)
+    # print('comment',c.comment)
     r = {
         'success': True,
         'data': c.json(),
