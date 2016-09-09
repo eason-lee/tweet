@@ -3,6 +3,7 @@ from ..models import Tweet
 from ..models import Comment
 from . import main
 from . import current_user
+from . import log
 
 from flask import request
 from flask import jsonify
@@ -15,6 +16,7 @@ from flask import redirect
 def tweet_add():
     u = current_user()
     form = request.get_json()
+    log('添加微博',form)
     if 'image' in form:
         image = form['image']
         form['image'] = '\n'.join(image)

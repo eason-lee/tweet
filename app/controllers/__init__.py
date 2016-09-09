@@ -1,12 +1,13 @@
 from flask import render_template
-from flask import session
 from flask import Blueprint
 from flask import abort
-import time
+
 from sqlalchemy import and_
 from ..models import User
 from ..models import Tweet
 from .. import db
+from ..api import current_user
+
 main = Blueprint('controllers', __name__)
 
 
@@ -17,13 +18,6 @@ def cutList(things):
     else:
         s = (t[n:n+5] for n in range(0,len(t)+1,5))
         return s
-
-# 通过 session 来获取当前登录的用户
-def current_user():
-    # print('session, debug', session.permanent)
-    username = session.get('username', '')
-    u = User.query.filter_by(username=username).first()
-    return u
 
 
 @main.route('/plaza')
