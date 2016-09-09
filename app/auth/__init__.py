@@ -20,8 +20,8 @@ blue = Blueprint('auth', __name__)
 # 通过 session 来获取当前登录的用户
 def current_user():
     # print('session, debug', session.permanent)
-    username = session.get('username', '')
-    u = User.query.filter_by(username=username).first()
+    id = session.get('id', '')
+    u = User.query.filter_by(id=id).first()
     return u
 
 
@@ -58,7 +58,7 @@ def register():
         r['success'] = True
         r['next'] = request.args.get('next', url_for('controllers.user_timeline_view'))
         session.permanent = True
-        session['username'] = u.username
+        session['id'] = u.id
     else:
         print('register failed', form)
         r['success'] = False
@@ -82,7 +82,7 @@ def login():
         r['success'] = True
         r['next'] = request.args.get('next', url_for('controllers.plaza_view'))
         session.permanent = True
-        session['username'] = username
+        session['id'] = user.id
     else:
         r['success'] = False
         r['message'] = '登录失败'

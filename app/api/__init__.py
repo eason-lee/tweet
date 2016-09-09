@@ -17,8 +17,8 @@ main = Blueprint('api', __name__)
 # 通过 session 来获取当前登录的用户
 def current_user():
     # print('session, debug', session.permanent)
-    username = session.get('username', '')
-    u = User.query.filter_by(username=username).first()
+    id = session.get('id', '')
+    u = User.query.filter_by(id=id).first()
     return u
 
 
@@ -37,6 +37,7 @@ def log(*args):
     except:
         print(colored("debug ", "red") + "something wrong")
 
+# 在有些需要用户登录的操作，可以使用这个装饰器
 def login_required(f):
     @wraps(f)
     def function(*args, **kwargs):
