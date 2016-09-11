@@ -11,12 +11,11 @@ from ..api import current_user
 main = Blueprint('controllers', __name__)
 
 
-def cutList(things):
-    t = things
-    if len(t) < 5:
+def cutList(t,count):
+    if len(t) < count:
         return t
     else:
-        s = (t[n:n+5] for n in range(0,len(t)+1,5))
+        s = (t[n:n+count] for n in range(0,len(t)+1,count))
         return s
 
 
@@ -34,7 +33,7 @@ def plaza_view():
         t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
         if len(t.comments) > 5:
-            t.comments = next(cutList(t.comments))
+            t.comments = next(cutList(t.comments,5))
         if t.transmit == '0':
             t.timage = t.list_image()
         else:
@@ -69,7 +68,7 @@ def user_timeline_view():
         t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
         if len(t.comments) > 5:
-            t.comments = next(cutList(t.comments))
+            t.comments = next(cutList(t.comments,5))
         if t.transmit != '0':
             tweet_id = int(t.transmit)
             transmit = Tweet.query.filter_by(id=tweet_id).first()
