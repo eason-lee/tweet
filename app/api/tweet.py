@@ -53,12 +53,14 @@ def tweet_delete(tweet_id):
 # 添加评论
 @main.route('/tweet/addComment/<tweet_id>', methods=['POST'])
 def tweet_addComment(tweet_id):
+    u = current_user()
     t = Tweet.query.filter_by(id=tweet_id).first()
     if t is None:
         abort(404)
     form = request.get_json()
     c = Comment(form)
     c.tweet = t
+    c.user = u
     c.save()
     # print('comment',c.comment)
     r = {

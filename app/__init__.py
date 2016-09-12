@@ -11,7 +11,7 @@ login_manager.login_view = 'auth.login'
 # 但是这时候还没有 app 所以要在 app 初始化之后再初始化这个 db
 db = SQLAlchemy()
 
-UPLOAD_FOLDER = '/var/www/tweet/static/image/'
+UPLOAD_FOLDER = '/var/www/tweet/app/static/image/'
 
 
 # 把 flask 的初始化放到函数中

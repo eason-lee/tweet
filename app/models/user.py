@@ -19,6 +19,7 @@ class User(db.Model, UserMixin,ReprMixin):
     fans = db.Column(db.Text())
     # 外键关联
     tweets = db.relationship('Tweet', backref='user')
+    comments = db.relationship('Comment', backref='user')
 
     @staticmethod
     def user_by_name(username):
@@ -36,6 +37,7 @@ class User(db.Model, UserMixin,ReprMixin):
         # 在初始化数据的时候写入 unixtime
         # 这样不依赖数据库的功能, 可以通用
         self.created_time = time.time()
+
 
     @property
     def password(self):

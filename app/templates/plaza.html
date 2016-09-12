@@ -120,7 +120,7 @@
                                       <button class='calss-button-comment my-button button btn btn-success'data-id='{{t.id}}'>发布</button>
                                       <div id = "id-div-comments-{{t.id}}">
                                           {% for c in t.comments %}
-                                              <p class="p-name">{{t.user.nicheng}} - {{c.created_time|format_time}} </p>
+                                              <p class="p-name">{{c.user.nicheng}} - {{c.created_time|format_time}} </p>
                                               <p> {{c.comment}} </p>
                                               <br>
                                           {% endfor %}

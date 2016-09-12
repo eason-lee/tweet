@@ -9,6 +9,7 @@ class Comment(db.Model,ReprMixin):
     comment = db.Column(db.String())
     created_time = db.Column(db.Integer, default=0)
     tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __init__(self, form):
         self.comment = form.get('comment', '')
