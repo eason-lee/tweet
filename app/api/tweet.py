@@ -58,10 +58,13 @@ def tweet_addComment(tweet_id):
     if t is None:
         abort(404)
     form = request.get_json()
+    t.comments_count = form['comments_count']
+    del form['comments_count']
     c = Comment(form)
     c.tweet = t
     c.user = u
     c.save()
+    t.save()
     # print('comment',c.comment)
     r = {
         'success': True,
@@ -95,16 +98,17 @@ def tweet_transmit(tweet_id):
     form = request.get_json()
     print('form.',form)
     form['transmit'] = tweet_id
+    bt = Tweet.query.filter_by(id=tweet_id).first()
+    bt.transmit_count = form['transmit_count']
     t = Tweet(form)
     t.user = u
     t.save()
+    bt.save()
     t.json()
     print('t.json',t.json())
     t.nicheng = u.nicheng
     t.portrait = u.portrait
     tweet = Tweet.query.filter_by(id=tweet_id).first()
-    tweet.transmit_count = tweet.transmit_count()
-    tweet.comments_count = tweet.comments_count()
     tuser = User.query.filter_by(id=tweet.user_id).first()
     nicheng = tuser.nicheng
     print('tweet.json', tweet.json())

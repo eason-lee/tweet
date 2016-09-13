@@ -6,28 +6,38 @@
                 $("#id-li-nav-" + i).addClass('active')
             }
         }
+        // 传图片
+        $("#id-div-file").hide();
+        $(".my-tweet-addPicture-button").on('click',function(){
+            $("#id-div-file").toggle();
+        });
+        // 点击头像
+        $(".my-tweet-guanzhu").hide();
+        $(".my-portrait").on('mouseover',function(){
+            var id = $(this).data('id');
+            $("#id-div-guanzhu-" + id).toggle();
+        });
         // 评论
         $('.calss-button-comment').on('click', function(){
             var tweetCommentId = $(this).data('id');
             addComment(tweetCommentId);
         });
-        // 关注
-        $('.img-portrait').on('click', function() {
-            guanzhuId = $(this).data('id');
-        });
+
         // 加关注
         $('.class-button-guanzhu').on('click', function(){
+            var user_id = $(this).data('id');
             var form = {
                 'fans': '+1'
             };
-            addGuanzhu(form);
+            addGuanzhu(user_id,form);
         });
         // 取消关注
         $('.class-button-qxguanzhu').on('click', function(){
+            var user_id = $(this).data('id');
             var form = {
                 'fans': '-1'
             };
-            addGuanzhu(form);
+            addGuanzhu(user_id,form);
         });
         // 转发
         $('.button-tweet-transmit').on('click', function(){

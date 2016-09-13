@@ -28,9 +28,8 @@ def plaza_view():
     t1 = Tweet.query.filter_by(id=1).first()
     tweets.remove(t1)
     tweets.sort(key=lambda t: t.created_time,reverse=True)
+
     for t in tweets:
-        t.transmit_count = t.transmit_count()
-        t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
         if len(t.comments) > 5:
             t.comments = next(cutList(t.comments,5))
@@ -64,8 +63,6 @@ def user_timeline_view():
     u.fans_count = len(u.list_fans())
     tweets.sort(key=lambda t: t.created_time,reverse=True)
     for t in tweets:
-        t.transmit_count = t.transmit_count()
-        t.comments_count = t.comments_count()
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
         if len(t.comments) > 5:
             t.comments = next(cutList(t.comments,5))

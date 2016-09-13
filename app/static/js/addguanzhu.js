@@ -1,5 +1,5 @@
 // 加关注
-var addGuanzhu = function(form) {
+var addGuanzhu = function(user_id,form) {
     var success = function (r) {
         log('comment, ', r);
         if(r.success) {
@@ -11,7 +11,6 @@ var addGuanzhu = function(form) {
     var error = function (err) {
         log(err);
     };
-    user_id = guanzhuId;
     log('user_id',user_id);
     vip.userAddRelation(form, user_id, success, error);
 };

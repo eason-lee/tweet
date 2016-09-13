@@ -14,7 +14,9 @@ class Tweet(db.Model, ReprMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     praise = db.Column(db.Integer,default=0)
     transmit = db.Column(db.String())
+    transmit_count = db.Column(db.Integer, default=0)
     comments = db.relationship('Comment',backref='tweet')
+    comments_count = db.Column(db.Integer,default=0)
 
     def __init__(self, form):
         print('tweet init', form)
@@ -22,12 +24,15 @@ class Tweet(db.Model, ReprMixin):
         image = form.get('image', '')
         praise = form.get('praise',0)
         transmit = form.get('transmit',0)
+        transmit_count = form.get('transmit_count', 0)
+        comments_count = form.get('comments_count',0)
         self.content = content
         self.created_time = time.time()
         self.praise = praise
         self.image = image
         self.transmit = transmit
-
+        self.transmit_count = transmit_count
+        self.comments_count = comments_count
 
     def json(self):
         extra = dict(
@@ -61,15 +66,3 @@ class Tweet(db.Model, ReprMixin):
             else:
                 image = [self.image]
         return image
-
-    def comments_count(self):
-        l = len(self.comments)
-        return l
-
-    def transmit_count(self):
-        if self.transmit == '0':
-            t = 0
-        else:
-            t = self.transmit.split('\n')
-            t = len(t)
-        return t

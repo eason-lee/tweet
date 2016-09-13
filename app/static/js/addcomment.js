@@ -1,7 +1,5 @@
 // 评论
 var commentTemplate = function (data) {
-    // var timeago = getTimeAgo(data.created_time)
-    // log('timeago',timeago)
     var t = `
         <div>
             <p class="p-name"> ${ formatTime(data.created_time) } </p>
@@ -18,9 +16,10 @@ insertComment = function (data) {
 
 var addComment = function(tweetCommentId) {
     var tweet_id = tweetCommentId
-    log('tweet_id',tweet_id)
+    var comments_count = $('#id-button-comment-' + tweet_id).val();
     var form = {
-        'comment': $('#id-input-comment-'+ tweet_id).val()
+        comment: $('#id-input-comment-'+ tweet_id).val(),
+        comments_count: parseInt(comments_count) + 1
     };
     if(form.comment == "") {
         var selector = '#id-input-comment-'+ tweet_id;

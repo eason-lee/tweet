@@ -1,8 +1,12 @@
 
 // 转发微博
 var transmitTweet = function() {
+    var tweet_id = tweetTransmitId;
+    var transmit_count = $('#id-button-transmit-' + tweet_id).val();
+    log('transmit_count',transmit_count)
     var form = {
-        'content': $('#id-input-transmit').val(),
+        content: $('#id-input-transmit').val(),
+        transmit_count: parseInt(transmit_count) + 1
     };
     var success = function (r) {
       log('login, ', r);
@@ -15,7 +19,6 @@ var transmitTweet = function() {
     var error = function (err) {
       log(err);
     };
-    var tweet_id = tweetTransmitId;
     vip.transmitTweet(form, tweet_id, success, error);
 };
 

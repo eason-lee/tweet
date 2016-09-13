@@ -45,13 +45,27 @@ body{
 }
 
 .my-tweet-add-buttons {
-    display: flex;
+    display: block;
     margin-top: 10px;
 }
 
 .my-tweet-add-button {
     width: 121px;
-    margin-left: 209px;
+    margin-left: 404px;
+}
+
+.my-inputFile {
+    width: 213px;
+    height: 100px;
+    background: white;
+    margin-top: 10px;
+}
+
+.my-inputFile-button {
+    width: 203px;
+    display: block;
+    position: relative;
+    top: 23px;
 }
 
 .my-timeline-sidebar {
@@ -67,6 +81,28 @@ body{
 .my-tweet-portrait {
     width:100%;
     height: 84px;
+}
+
+.my-portrait {
+
+}
+
+.my-tweet-guanzhu {
+    width: 200px;
+    height: 100px;
+    background: #ccc;
+    margin-top: 10px;
+    float: right;
+    position: relative;
+    top: -115px;
+    right: 418px;
+    border-radius: 13px;
+}
+
+.my-guanzhu-button {
+    position: relative;
+    top: 31px;
+    left: 31px;
 }
 
 .my-tweet-nicheng {
