@@ -6,14 +6,21 @@
                 $("#id-li-nav-" + i).addClass('active')
             }
         }
+        // 发微博
+        $('#id-button-tweet-add').on('click', function() {
+            addNewTweet(image_urls);
+        });
         // 传图片
         $("#id-div-file").hide();
         $(".my-tweet-addPicture-button").on('click',function(){
             $("#id-div-file").toggle();
         });
+        $(".my-tweet-sendPicture-button").on('click',function(){
+            sendPicture();
+        });
         // 点击头像
         $(".my-tweet-guanzhu").hide();
-        $(".my-portrait").on('mouseover',function(){
+        $(".my-portrait").on('click',function(){
             var id = $(this).data('id');
             $("#id-div-guanzhu-" + id).toggle();
         });
@@ -51,10 +58,7 @@
             var praiseButton = $(this);
             praiseTweet(praiseButton);
         });
-        // 发微博
-        $('#id-button-tweet-add').on('click', function() {
-            addTweet();
-        });
+
         // 删微博
         $('body').on('click', '.button-tweet-delete', function(){
             var deleteButton = $(this);
@@ -66,21 +70,7 @@
         });
         // 头像上传
         $('#id-button-addUserThings').on('click', function() {
-            var fileTag =$('#id-input-file')[0];
-            var files = fileTag.files;
-            var numberOfFiles = files.length;
-            if(numberOfFiles == 0) {
-                log('没有上传头像');
-                addUserThings();
-            } else {
-                for (var i = 0; i < numberOfFiles; i++) {
-                    var file = files[i];
-                    log('上传的文件: ', file.name);
-                    upload(file);
-                    portrait_url = '/static/image/' + file.name;
-                };
-                addUserThings(portrait_url)
-            };
+            updateUserData();
         });
     };
 

@@ -66,6 +66,13 @@ body{
     display: block;
     position: relative;
     top: 23px;
+    left: 4px;
+}
+
+.my-tweet-sendPicture-button {
+    position: relative;
+    top: 20px;
+    left: 69px;
 }
 
 .my-timeline-sidebar {

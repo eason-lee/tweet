@@ -49,45 +49,21 @@
           };
           log('form')
           vip.tweetAdd(form, success, error);
+          image_urls = new Array();
       }
   };
 
-  var upload = function(file) {
-          // 要用一个 formdata 对象来装 file
-          var fd = new FormData();
-          fd.append('uploaded', file);
+var image_urls = new Array();
 
-          $.ajax({
-              url: '/api/upload',
-              method: 'post',
-              // 下面这两个选项一定要加上
-              contentType: false,
-              processData: false,
-              data: fd,
-              success: function(r) {
-                  log('上传成功', file.name);
-              },
-              error: function() {
-                  log('上传失败', file.name);
-              }
-          });
-      };
-
-  var addTweet = function() {
-      var fileTag =$('#id-input-file')[0];
-      var files = fileTag.files;
-      var numberOfFiles = files.length;
-      if(numberOfFiles == 0) {
-          addNewTweet();
-      } else {
-          var image_urls = new Array()
-          for (var i = 0; i < numberOfFiles; i++) {
-              var file = files[i];
-              log('上传的文件: ', file.name);
-              upload(file);
-              image_url = '/static/image/' + file.name;
-              image_urls.push(image_url)
-          };
-          addNewTweet(image_urls);
-      };
-  }
+var sendPicture = function () {
+    var fileTag =$('#id-input-file')[0];
+    var files = fileTag.files;
+    var numberOfFiles = files.length;
+    for (var i = 0; i < numberOfFiles; i++) {
+        var file = files[i];
+        log('上传的文件: ', file.name);
+        upload(file);
+        var image_url = '/static/image/' + file.name;
+        image_urls.push(image_url);
+    };
+};
