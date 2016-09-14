@@ -1,8 +1,8 @@
 // 添加微博到页面
-  var insertTweet = function(tweet) {
+  var insertTweet = function(tweet,user_id) {
       var t = tweet;
-      var time = formatTime(t.created_time)
-      log('图片url',t.image)
+      var time = formatTime(t.created_time);
+      log('图片url',t.image);
       if(t.image != '') {
           var image = t.image.split('\n');
       } else {
@@ -16,6 +16,7 @@
           uportrait: t.portrait,
           unicheng: t.nicheng,
           user_id: t.user_id,
+          current_user: user_id,
       };
       log('data',data)
       var tweet = template('addTweetTemplate', data);
@@ -25,21 +26,23 @@
   };
   // 添加微博
   var addNewTweet = function() {
-      var images= arguments[0]
-      log('文件',images)
+      var images= arguments[0];
+      log('文件',images);
       var form = {
           'content': $('#id-input-tweet').val(),
           'image': images
       };
-      if(form.content == '') {
-          var selector = '#id-input-tweet'
+      if(form.content == "") {
+          var selector = '#id-input-tweet';
           $(selector).css('background-color','#ffd2d2');
-          setTimeout(function(){$(selector).css('background-color','white')},800);
+          setTimeout(function(){
+              $(selector).css('background-color','white');
+          }, 800);
       } else {
           var success = function (r) {
             log('login, ', r);
             if(r.success) {
-                insertTweet(r.data);
+                insertTweet(r.data,r.user_id);
             } else {
                 log(r.message);
             }
@@ -47,7 +50,6 @@
           var error = function (err) {
             log(err);
           };
-          log('form')
           vip.tweetAdd(form, success, error);
           image_urls = new Array();
       }

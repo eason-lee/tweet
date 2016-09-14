@@ -199,11 +199,20 @@ body{
     left: 20px;
 }
 
-.my-transmit-bottom {
+.my-transmit-bottom-current {
     background-color: white;
     position: relative;
     top: 34px;
 }
+
+.my-transmit-bottom {
+    background-color: white;
+    position: relative;
+    top: 34px;
+    padding-left: 18px;
+}
+
+
 
 .my-transmit-button {
     margin-right: 0;

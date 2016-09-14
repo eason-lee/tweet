@@ -11,6 +11,7 @@ from flask import abort
 from flask import render_template
 from flask import redirect
 
+
 # 添加微博
 @main.route('/tweet/add', methods=['POST'])
 def tweet_add():
@@ -80,14 +81,12 @@ def tweet_addPraise(tweet_id):
     if t is None:
         abort(404)
     form = request.get_json()
-    print('form',form)
     t.praise = form['praise']
     t.save()
     r = dict(
         success=True,
         data=t.json(),
     )
-    print('addprise',r['data'])
     return jsonify(r)
 
 
@@ -96,7 +95,6 @@ def tweet_addPraise(tweet_id):
 def tweet_transmit(tweet_id):
     u = current_user()
     form = request.get_json()
-    print('form.',form)
     form['transmit'] = tweet_id
     bt = Tweet.query.filter_by(id=tweet_id).first()
     bt.transmit_count = form['transmit_count']
@@ -105,17 +103,46 @@ def tweet_transmit(tweet_id):
     t.save()
     bt.save()
     t.json()
-    print('t.json',t.json())
     t.nicheng = u.nicheng
     t.portrait = u.portrait
     tweet = Tweet.query.filter_by(id=tweet_id).first()
     tuser = User.query.filter_by(id=tweet.user_id).first()
-    nicheng = tuser.nicheng
-    print('tweet.json', tweet.json())
+    tweet.nicheng = tuser.nicheng
     r = {
         'success': True,
         'data': t.json(),
         'tweet': tweet.json(),
-        'nicheng': nicheng,
+        'user_id': u.id,
     }
     return jsonify(r)
+
+# 加载微博
+@main.route('/tweet/loads')
+def tweet_loads():
+    u = current_user()
+    ts = Tweet.query.all()
+    ts.sort(key=lambda t: t.created_time, reverse=True)
+    ts = next(cutList(ts,12))
+    for t in ts:
+        if t.transmit != '0':
+            bt = Tweet.query.filter_by(id=int(t.transmit)).first()
+            t.tweet = bt.json()
+            bu = User.query.filter_by(id=bt.user_id).first()
+            t.nicheng = bu.nicheng
+            t.portrait = bu.portrait
+    print('ts', ts)
+    r = dict(
+        success=True,
+        data=[t.json() for t in ts],
+        user_id = u.id,
+    )
+    log('data',r['data'])
+    print('data',r['data'])
+    return jsonify(r)
+
+def cutList(t,count):
+    if len(t) < count:
+        return t
+    else:
+        s = (t[n:n+count] for n in range(count,len(t)+1,count))
+        return s

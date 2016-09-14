@@ -17,40 +17,9 @@
     <script src="/static/js/addtweet.js"></script>
     <script src="/static/js/deletetweet.js"></script>
     <script src="/static/js/transmittweet.js"></script>
+    <script src="/static/js/template.js"></script>
+    <script src="/static/js/loadTweets.js"></script>
     <script src="/static/js/bindactions.js"></script>
-    <script id="addTweetTemplate" type="text/html">
-        {% raw %}
-            <div id="id-div-tweet-body" class="my-content-tweet">
-              <div class="my-tweet-portrait">
-                    <img src={{uportrait}} data-id="{{user_id}}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
-                    <h4 class="my-tweet-nicheng">{{ unicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ time }}</cite></footer></small> </h4>
-              </div>
-              <div class="my-tweet-contents">
-                  <p class=".my-tweet-content"> {{ content }} <p>
-                  <div class="my-tweet-image">
-                      {{each image as value i}}
-                          <img src={{value}} id={{i}} class="my-image">
-                      {{/each}}
-                  </div>
-              </div>
-              <div class="my-tweet-buttons">
-                  <div class="my-div-comment">
-                      <div class="collapse" id="collapseExample-{{id}}">
-                          <div class="well">
-                              <input id="id-input-comment-{{id}}"  autocomplete="off" class="my-input-warning" type="text">
-                              <button class='calss-button-comment my-button button btn btn-default'data-id='{{id}}'>发布</button>
-                              <div id = "id-div-comments-{{id}}">
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="my-selftweet-button">
-                          <button class='button-tweet-edit my-transmit-button button btn btn-info' data-id='{{id}}'>编辑</button>
-                          <button class='button-tweet-delete my-transmit-button button btn btn-danger' data-id="{{id}}">删除</button>
-                      </div>
-              </div>
-        {% endraw %}
-    </script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -109,13 +78,13 @@
                     {% if t.transmit == '0' %}
                         <div id="id-div-tweet-body" class="my-content-tweet">
                               <div id="id-div-guanzhu-{{t.id}}" class="my-tweet-guanzhu">
-                                  <div class="my-guanzhu-button">
+                                  <div class="my-guanzhu-button" style="" >
                                       <button  class="class-button-guanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >关注</button>
                                       <button  class="class-button-qxguanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >取消关注</button>
                                   </div>
                               </div>
                               <div class="my-tweet-portrait">
-                                    <img src={{t.user.portrait}} data-id="{{t.id}}"class="my-portrait img-portrait">
+                                    <img src={{t.user.portrait}}  data-id="{{t.id}}"class="my-portrait img-portrait">
                                     <h4 class="my-tweet-nicheng">{{ t.user.nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.created_time|format_time }}</cite></footer></small> </h4>
                               </div>
                               <div class="my-tweet-contents">

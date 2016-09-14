@@ -6,9 +6,9 @@ var deleteTweet = function(deleteButton) {
           deleteButton.closest(`#id-div-tweet-body`).remove();
         }
     };
-    // var error = function(err) {
-    //   log(err);
-    // };
+    var error = function(err) {
+      log(err);
+    };
     var tweet_id = $(deleteButton).attr('data-id');
-    vip.tweetDelete(tweet_id,success);
+    vip.tweetDelete(tweet_id,success,error);
 };

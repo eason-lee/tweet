@@ -59,60 +59,65 @@ vip.ajax = function(url, method, form, success, error) {
     $.ajax(request);
 };
 
-vip.get = function(url, success) {
+vip.get = function (url, success,error) {
     var method = 'get';
     var form = {};
-    this.ajax(url, method, form, success, success);
+    this.ajax(url, method, form, success, error);
 };
 
-vip.post = function(url, form, success, error) {
+vip.post = function (url, form, success, error) {
     var method = 'post';
     this.ajax(url, method, form, success, error);
 };
 
 // API normal
-vip.register = function(form, success, error) {
+vip.register = function (form, success, error) {
     var url = '/register';
     this.post(url, form, success, error);
 };
 
-vip.login = function(form, success, error) {
+vip.login = function (form, success, error) {
     var url = '/login';
     this.post(url, form, success, error);
 };
 
 // tweet API
-vip.tweetAdd = function(form, success, error) {
+vip.tweetAdd = function (form, success, error) {
     var url = '/api/tweet/add';
     this.post(url, form, success, error);
 };
 
-vip.tweetDelete = function(tweet_id,success) {
+vip.tweetDelete = function (tweet_id,success,error) {
     url = '/api/tweet/delete/' + tweet_id;
-    this.get(url,success);
+    this.get(url,success,error);
 };
 
-vip.tweetComment = function(form, tweet_id, success, error) {
+vip.tweetComment = function (form, tweet_id, success, error) {
     var url = 'api/tweet/addComment/' + tweet_id;
     this.post(url,form,success,error);
 };
 
-vip.tweetAddPraise = function(form, tweet_id, success, error) {
+vip.tweetAddPraise = function (form, tweet_id, success, error) {
     var url = 'api/tweet/addPraise/' + tweet_id;
     this.post(url,form,success,error);
 };
 
-vip.userAddThings = function(form, success, error) {
+vip.userAddThings = function (form, success, error) {
     var url = 'api/user/addthings';
     this.post(url,form,success,error);
 };
 
-vip.userAddRelation = function(form, user_id, success, error) {
+vip.userAddRelation = function (form, user_id, success, error) {
     var url = 'api/user/addRelation/' + user_id;
     this.post(url,form,success,error);
 };
 
-vip.transmitTweet = function(form,tweet_id,success,error) {
+vip.transmitTweet = function (form,tweet_id,success,error) {
     var url = 'api/tweet/transmit/' + tweet_id;
     this.post(url,form,success,error);
 };
+
+vip.loadTweets = function (success,error) {
+    url = '/api/tweet/loads';
+    this.get(url,success,error);
+}

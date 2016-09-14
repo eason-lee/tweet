@@ -1,0 +1,37 @@
+
+    <div id="id-div-tweet-body" class="my-content-tweet">
+      <div class="my-tweet-portrait">
+            <img src={{uportrait}} data-id="{{user_id}}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
+            <h4 class="my-tweet-nicheng">{{ unicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ time }}</cite></footer></small> </h4>
+      </div>
+      <div class="my-tweet-contents">
+          <p class=".my-tweet-content"> {{ content }} <p>
+          <div class="my-tweet-image">
+              {{each image as value i}}
+                  <img src={{value}} id={{i}} class="my-image">
+              {{/each}}
+          </div>
+      </div>
+      <div class="my-tweet-buttons">
+          <div class="my-div-comment">
+              <div class="collapse" id="collapseExample-{{id}}">
+                  <div class="well">
+                      <input id="id-input-comment-{{id}}"  autocomplete="off" class="my-input-warning" type="text">
+                      <button class='calss-button-comment my-button button btn btn-default'data-id='{{id}}'>发布</button>
+                      <div id = "id-div-comments-{{id}}">
+                      </div>
+                    </div>
+                </div>
+              </div>
+              {{ if user_id == current_user }}
+                  <div class="my-selftweet-button">
+                      <button class='button-tweet-edit my-transmit-button button btn btn-info'data-id='{{id}}'>编辑</button>
+                      <button class='button-tweet-delete my-transmit-button button btn btn-danger'data-id="{{id}}">删除</button>
+                  </div>
+              {{ else }}
+                  <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+                  <button  class="button-tweet-praise my-button button btn btn-success"  data-id="{{id}}" value="{{praise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ praise }} </button>
+                  <button id="id-button-transmit-{{id}}" class="button-tweet-transmit my-button button btn btn-info"  data-id="{{id}}" value="{{transmit_count}}" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-new-window"></span> {{ transmit_count }} </button>
+                  <button id="id-button-comment-{{id}}" class="button-tweet-comment my-button button btn btn-primary" data-id="{{id}}" value="{{comments_count}}" data-toggle="collapse" data-target="#collapseExample-{{id}}" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-comment"> </span> {{ comments_count }} </button>
+              {{ /if }}
+      </div>

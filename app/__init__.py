@@ -12,9 +12,9 @@ login_manager.login_view = 'auth.login'
 db = SQLAlchemy()
 
 #服务器
-UPLOAD_FOLDER = '/var/www/tweet/app/static/image/'
+# UPLOAD_FOLDER = '/var/www/tweet/app/static/image/'
 # 开发
-# UPLOAD_FOLDER = 'app/static/image/'
+UPLOAD_FOLDER = 'app/static/image/'
 
 # 把 flask 的初始化放到函数中
 # 由外部启动函数来调用

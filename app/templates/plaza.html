@@ -17,43 +17,9 @@
     <script src="/static/js/addtweet.js"></script>
     <script src="/static/js/deletetweet.js"></script>
     <script src="/static/js/transmittweet.js"></script>
+    <script src="/static/js/template.js"></script>
+    <script src="/static/js/loadTweets.js"></script>
     <script src="/static/js/bindactions.js"></script>
-    <script id="transmitTweetTemplate" type="text/html">
-        {% raw %}
-        <div id="id-div-tweet-body" class="my-tweet-transmit">
-            <div class="my-transmit-top">
-                <div class="my-tweet-transmit-portrait-1">
-                    <img src={{ dportrait }} data-id="{{ did }}" data-toggle="modal" data-target=".bs-example-modal-sm"  class="img-portrait">
-                    <h4 class="my-tweet-nicheng">{{ dnicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ dtime }}</cite></footer></small> </h4>
-                </div>
-                    <p class="my-tweet-transmit-content"> {{ dcontent }} <p>
-            </div>
-            <div class="my-transmit-content-tweet">
-                  <div class="my-tweet-transmit-portrait-2">
-                        <h4 class="my-tweet-nicheng">{{ tnicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ ttime }}</cite></footer></small> </h4>
-                  </div>
-                  <div class="my-transmit-tweet-contents">
-                      <p class=".my-tweet-content"> {{ tcontent }} <p>
-                      <div class="my-tweet-image">
-                          {{each timage as value i}}
-                              <img src={{value}} id={{i}} class="my-image">
-                          {{/each}}
-                      </div>
-                  </div>
-                  <div class="my-tweet-buttons">
-                      <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
-                      <button  class=" my-button button btn btn-success"  data-id="{{tid}}" value="{{tpraise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ tpraise }} </button>
-                      <button  class=" my-button button btn btn-info"  data-id="{{tid}}"  data-target="#myModal"><span class="glyphicon glyphicon-new-window"></span> {{ ttransmit }} </button>
-                      <button  class="button-tweet-comment my-button button btn btn-primary" data-id="{{tid}}" data-toggle="collapse" data-target="#collapseExample-{{tid}}" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-comment"></span> {{ tcomments }} </button>
-                  </div>
-                </div>
-                <div class="my-transmit-bottom">
-                    <button class='button-tweet-edit my-transmit-button button btn btn-info' data-id='{{did}}'>编辑</button>
-                    <button class='button-tweet-delete my-transmit-button button btn btn-danger' data-id="{{did}}">删除</button>
-                </div>
-            </div>
-        {% endraw %}
-    </script>
 </head>
 <body >
   <nav class="navbar navbar-inverse">
