@@ -31,7 +31,7 @@ def init_app():
     # sqlite配置
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
     # mysql配置
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:lisen230+@localhost:3306/abc'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://book:book@localhost:3306/abc'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
     # 初始化 db
