@@ -174,7 +174,7 @@
 
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
-    /*v:4*/
+    /*v:5*/
 template('addTweetTemplate',function($data,$filename
 /**/) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,id=$data.id,uportrait=$data.uportrait,user_id=$data.user_id,unicheng=$data.unicheng,time=$data.time,content=$data.content,$each=$utils.$each,image=$data.image,value=$data.value,i=$data.i,current_user=$data.current_user,praise=$data.praise,transmit_count=$data.transmit_count,comments_count=$data.comments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-content-tweet"> <div class="modal fade" id="id-div-guanzhu-';
@@ -183,9 +183,9 @@ $out+='" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=
 $out+=$escape(uportrait);
 $out+=' class="my-portrait-guanzhu img-thumbnail"> <div class="my-guanzhu-button"> <button class="class-button-guanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
+$out+='" data-dismiss="modal" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-portrait"> <img class="img-portrait" src=';
+$out+='" data-dismiss="modal" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-portrait"> <img class="img-portrait" src=';
 $out+=$escape(uportrait);
 $out+=' data-id="';
 $out+=$escape(user_id);
@@ -249,7 +249,7 @@ $out+=' </button> ';
 }
 $out+=' </div> ';
 return new String($out);
-});/*v:5*/
+});/*v:6*/
 template('transmitTweetTemplate',function($data,$filename
 /**/) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,did=$data.did,dportrait=$data.dportrait,user_id=$data.user_id,dnicheng=$data.dnicheng,dtime=$data.dtime,dcontent=$data.dcontent,tnicheng=$data.tnicheng,ttime=$data.ttime,tcontent=$data.tcontent,$each=$utils.$each,timage=$data.timage,value=$data.value,i=$data.i,tid=$data.tid,tpraise=$data.tpraise,ttransmit=$data.ttransmit,tcomments=$data.tcomments,current_user=$data.current_user,dpraise=$data.dpraise,dtransmit_count=$data.dtransmit_count,dcomments_count=$data.dcomments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-tweet-transmit"> <div class="my-transmit-top"> <div class="modal fade" id="id-div-guanzhu-';
@@ -258,9 +258,9 @@ $out+='" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=
 $out+=$escape(dportrait);
 $out+=' class="my-portrait-guanzhu img-thumbnail"> <div class="my-guanzhu-button"> <button class="class-button-guanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
+$out+='" data-dismiss="modal" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-transmit-portrait-1"> <img src=';
+$out+='" data-dismiss="modal" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-transmit-portrait-1"> <img src=';
 $out+=$escape(dportrait);
 $out+=' data-id="';
 $out+=$escape(did);

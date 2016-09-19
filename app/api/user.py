@@ -29,7 +29,7 @@ def user_addRelation(user_id):
     form = request.get_json()
     print('form',form)
     if fans.id == u.id:
-        print('关注了自己')
+        message = '不能关注自己'
     else:
         gz = form['fans']
         if gz == '+1':
@@ -47,6 +47,7 @@ def user_addRelation(user_id):
                 fguanzhu.append(fs)
                 fans.guanzhu = format_str(fguanzhu)
                 fans.save()
+            message = '关注成功'
         elif gz == '-1':
             # 删除粉丝
             fd = str(fans.id)
@@ -62,8 +63,10 @@ def user_addRelation(user_id):
                 fguanzhu.remove(ud)
                 fans.guanzhu = format_str(fguanzhu)
                 fans.save()
+            message = '已取消关注'
     r = dict(
         success=True,
+        message = message,
     )
     return jsonify(r)
 

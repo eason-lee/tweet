@@ -18,12 +18,7 @@
         $(".my-tweet-sendPicture-button").on('click',function(){
             sendPicture();
         });
-        // 点击头像
-        // $(".my-tweet-guanzhu").hide();
-        // $(".my-portrait").on('click',function(){
-        //     var id = $(this).data('id');
-        //     $("#id-div-guanzhu-" + id).toggle();
-        // });
+
         // 评论
         $('.calss-button-comment').on('click', function(){
             var tweetCommentId = $(this).data('id');

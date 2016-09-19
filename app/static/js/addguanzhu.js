@@ -3,9 +3,10 @@ var addGuanzhu = function(user_id,form) {
     var success = function (r) {
         log('comment, ', r);
         if(r.success) {
-            log('成功');
+            alertify.success(r.message);
+
         } else {
-            log('失败');
+            alertify.error(r.message);
         }
     };
     var error = function (err) {

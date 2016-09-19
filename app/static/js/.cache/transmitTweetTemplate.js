@@ -1,4 +1,4 @@
-/*TMODJS:{"version":5,"md5":"c27dda732cb2fc4d1bdd42bc0f98e88d"}*/
+/*TMODJS:{"version":6,"md5":"622391b1495975f2abd4f292be324190"}*/
 template('transmitTweetTemplate',function($data,$filename
 /**/) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,did=$data.did,dportrait=$data.dportrait,user_id=$data.user_id,dnicheng=$data.dnicheng,dtime=$data.dtime,dcontent=$data.dcontent,tnicheng=$data.tnicheng,ttime=$data.ttime,tcontent=$data.tcontent,$each=$utils.$each,timage=$data.timage,value=$data.value,i=$data.i,tid=$data.tid,tpraise=$data.tpraise,ttransmit=$data.ttransmit,tcomments=$data.tcomments,current_user=$data.current_user,dpraise=$data.dpraise,dtransmit_count=$data.dtransmit_count,dcomments_count=$data.dcomments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-tweet-transmit"> <div class="my-transmit-top"> <div class="modal fade" id="id-div-guanzhu-';
@@ -7,9 +7,9 @@ $out+='" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=
 $out+=$escape(dportrait);
 $out+=' class="my-portrait-guanzhu img-thumbnail"> <div class="my-guanzhu-button"> <button class="class-button-guanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
+$out+='" data-dismiss="modal" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
 $out+=$escape(user_id);
-$out+='" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-transmit-portrait-1"> <img src=';
+$out+='" data-dismiss="modal" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-transmit-portrait-1"> <img src=';
 $out+=$escape(dportrait);
 $out+=' data-id="';
 $out+=$escape(did);

@@ -2,6 +2,7 @@
     "name": "template",
     "version": "1.0.0",
     "dependencies": {
+        "alertifyjs": "^1.8.0",
         "tmodjs": "1.0.3"
     },
     "tmodjs-config": {
