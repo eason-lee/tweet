@@ -63,14 +63,17 @@
         {% for t in tweets %}
             {% if t.transmit == '0' %}
                 <div id="id-div-tweet-body" class="my-content-tweet">
-                    <div id="id-div-guanzhu-{{t.id}}" class="my-tweet-guanzhu">
-                        <div class="my-guanzhu-button">
-                            <button  class="class-button-guanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >关注</button>
-                            <button  class="class-button-qxguanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >取消关注</button>
+                    <div class="modal fade" id="id-div-guanzhu-{{t.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="my-modal-guanzhu">
+                            <img src={{t.user.portrait}} class="my-portrait-guanzhu img-thumbnail">
+                            <div class="my-guanzhu-button">
+                                <button  class="class-button-guanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >关注</button>
+                                <button  class="class-button-qxguanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >取消关注</button>
+                            </div>
                         </div>
                     </div>
                     <div class="my-tweet-portrait">
-                          <img src={{t.user.portrait}} data-id="{{t.id}}"class="my-portrait img-portrait">
+                          <img src={{t.user.portrait}} data-id="{{t.id}}" class="my-portrait img-portrait" data-toggle="modal" data-target="#id-div-guanzhu-{{t.id}}">
                           <h4 class="my-tweet-nicheng">{{ t.user.nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.created_time|format_time }}</cite></footer></small> </h4>
                     </div>
                       <div class="my-tweet-contents">
@@ -117,14 +120,17 @@
                 {% else %}
                 <div id="id-div-tweet-body" class="my-tweet-transmit">
                     <div class="my-transmit-top">
-                        <div id="id-div-guanzhu-{{t.id}}" class="my-tweet-guanzhu">
-                            <div class="my-guanzhu-button">
-                                <button  class="class-button-guanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >关注</button>
-                                <button  class="class-button-qxguanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >取消关注</button>
+                        <div class="modal fade" id="id-div-guanzhu-{{t.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="my-modal-guanzhu">
+                                <img src={{t.user.portrait}} class="my-portrait-guanzhu img-thumbnail">
+                                <div class="my-guanzhu-button">
+                                    <button  class="class-button-guanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >关注</button>
+                                    <button  class="class-button-qxguanzhu btn btn-primary" data-id="{{t.user_id}}" type="button" >取消关注</button>
+                                </div>
                             </div>
                         </div>
                         <div class="my-tweet-transmit-portrait-1">
-                            <img src={{t.user.portrait}} data-id="{{t.id}}" class="my-portrait img-portrait">
+                            <img src={{t.user.portrait}} data-id="{{t.id}}" class="my-portrait img-portrait" data-toggle="modal" data-target="#id-div-guanzhu-{{t.id}}">
                             <h4 class="my-tweet-nicheng">{{ t.user.nicheng }}  <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">{{ t.created_time|format_time }}</cite></footer></small> </h4>
                         </div>
                             <p class="my-tweet-transmit-content"> {{t.content }} <p>

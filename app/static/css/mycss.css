@@ -110,12 +110,23 @@ body{
     top: -115px;
     right: 418px;
     border-radius: 13px;
+    overflow:hidden;
+}
+
+.my-modal-guanzhu {
+    position: relative;
+    top: 246px;
+    left: 500px;
+}
+
+.my-portrait-guanzhu {
+    width: 200px;
+    height: 200px;
+    border-radius: 5%;
 }
 
 .my-guanzhu-button {
-    position: relative;
-    top: 31px;
-    left: 31px;
+    margin: 20px;
 }
 
 .my-tweet-nicheng {

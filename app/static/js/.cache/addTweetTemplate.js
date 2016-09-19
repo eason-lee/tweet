@@ -1,11 +1,21 @@
-/*TMODJS:{"version":1,"md5":"a7ed42da9d803d67371702f7b3bb5bb5"}*/
+/*TMODJS:{"version":4,"md5":"3c16b8b8b0615d5bde4d157b94e3bc4d"}*/
 template('addTweetTemplate',function($data,$filename
 /**/) {
-'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,uportrait=$data.uportrait,user_id=$data.user_id,unicheng=$data.unicheng,time=$data.time,content=$data.content,$each=$utils.$each,image=$data.image,value=$data.value,i=$data.i,id=$data.id,current_user=$data.current_user,praise=$data.praise,transmit_count=$data.transmit_count,comments_count=$data.comments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-content-tweet"> <div class="my-tweet-portrait"> <img src=';
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,id=$data.id,uportrait=$data.uportrait,user_id=$data.user_id,unicheng=$data.unicheng,time=$data.time,content=$data.content,$each=$utils.$each,image=$data.image,value=$data.value,i=$data.i,current_user=$data.current_user,praise=$data.praise,transmit_count=$data.transmit_count,comments_count=$data.comments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-content-tweet"> <div class="modal fade" id="id-div-guanzhu-';
+$out+=$escape(id);
+$out+='" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="my-modal-guanzhu"> <img src=';
+$out+=$escape(uportrait);
+$out+=' class="my-portrait-guanzhu img-thumbnail"> <div class="my-guanzhu-button"> <button class="class-button-guanzhu btn btn-primary" data-id="';
+$out+=$escape(user_id);
+$out+='" type="button" >关注</button> <button class="class-button-qxguanzhu btn btn-primary" data-id="';
+$out+=$escape(user_id);
+$out+='" type="button" >取消关注</button> </div> </div> </div> <div class="my-tweet-portrait"> <img class="img-portrait" src=';
 $out+=$escape(uportrait);
 $out+=' data-id="';
 $out+=$escape(user_id);
-$out+='" data-toggle="modal" data-target=".bs-example-modal-sm" class="img-portrait"> <h4 class="my-tweet-nicheng">';
+$out+='" data-toggle="modal" data-target="#id-div-guanzhu-';
+$out+=$escape(id);
+$out+='" > <h4 class="my-tweet-nicheng">';
 $out+=$escape(unicheng);
 $out+=' <small><footer class="my-tweet-time">微博创建于 <cite title="Source Title">';
 $out+=$escape(time);

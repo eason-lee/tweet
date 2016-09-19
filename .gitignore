@@ -48,3 +48,6 @@ Temporary Items
 log_code.txt
 __pycache__
 *.sqlite
+
+__pycache__/*
+__pycache__\*

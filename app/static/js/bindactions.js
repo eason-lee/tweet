@@ -3,7 +3,7 @@
         // 导航栏
         for(var i = 0; i < 4; i++) {
             if($("#id-li-nav-" + i).text() == $('title').text() ){
-                $("#id-li-nav-" + i).addClass('active')
+                $("#id-li-nav-" + i).addClass('active');
             }
         }
         // 发微博
@@ -19,11 +19,11 @@
             sendPicture();
         });
         // 点击头像
-        $(".my-tweet-guanzhu").hide();
-        $(".my-portrait").on('click',function(){
-            var id = $(this).data('id');
-            $("#id-div-guanzhu-" + id).toggle();
-        });
+        // $(".my-tweet-guanzhu").hide();
+        // $(".my-portrait").on('click',function(){
+        //     var id = $(this).data('id');
+        //     $("#id-div-guanzhu-" + id).toggle();
+        // });
         // 评论
         $('.calss-button-comment').on('click', function(){
             var tweetCommentId = $(this).data('id');
