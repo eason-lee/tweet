@@ -1,7 +1,7 @@
-
 from .. import UPLOAD_FOLDER
 from . import main
 
+from flask import jsonify
 from flask import request
 import os
 from werkzeug import secure_filename
@@ -14,10 +14,16 @@ def allowed_file(filename):
 @main.route('/upload', methods=['POST'])
 def upload_file():
     file = request.files.get('uploaded')
+    r = dict(
+        success= True,
+        message= '',
+    )
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         path = os.path.join(UPLOAD_FOLDER, filename)
         file.save(path)
-        return path
+        r['message'] = filename
     else:
-        return '<h1>没有上传</h1>'
+        r['success'] = False
+
+    return jsonify(r)

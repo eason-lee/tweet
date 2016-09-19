@@ -11,7 +11,7 @@ var upload = function(file) {
             processData: false,
             data: fd,
             success: function(r) {
-                log('上传成功', file.name);
+                log('上传成功', r.message);
             },
             error: function() {
                 log('上传失败', file.name);
