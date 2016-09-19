@@ -11,8 +11,10 @@ var upload = function(file) {
             processData: false,
             data: fd,
             success: function(r) {
+                log('r',r)
                 if(r.success) {
                     alertify.success('上传成功', file.name);
+                    log('filename',file.name)
                 } else {
                     alertify.error('上传失败',file.name);
                 }
