@@ -11,10 +11,14 @@ var upload = function(file) {
             processData: false,
             data: fd,
             success: function(r) {
-                log('上传成功', r.message);
-            },
-            error: function() {
-                log('上传失败', file.name);
+                if(r.success) {
+                    alertify.success('上传成功', file.name);
+                } else {
+                    alertify.error('上传失败',file.name);
+                }
+            error: function(err) {
+                log(err);
             }
+          }
         });
     };
