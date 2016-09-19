@@ -17,6 +17,7 @@
         });
         $(".my-tweet-sendPicture-button").on('click',function(){
             sendPicture();
+            $("#id-div-file").hide();
         });
 
         // 评论

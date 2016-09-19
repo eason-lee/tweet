@@ -182,6 +182,7 @@ body{
 .my-image{
     width: 125px;
     height: 125px;
+    margin-bottom: 5px;
 }
 
 .img-portrait {
