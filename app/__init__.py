@@ -28,7 +28,10 @@ def init_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     # 设置你的加密 key
     app.secret_key = 'TODO fixme'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
+    # sqlite配置
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
+    # mysql配置
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:lisen230+@localhost:3306/abc'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
     # 初始化 db
