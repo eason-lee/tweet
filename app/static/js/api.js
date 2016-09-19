@@ -117,7 +117,7 @@ vip.transmitTweet = function (form,tweet_id,success,error) {
     this.post(url,form,success,error);
 };
 
-vip.loadTweets = function (success,error) {
-    url = '/api/tweet/loads';
+vip.loadTweets = function (page_id,success,error) {
+    url = '/api/tweet/loads/'+page_id;
     this.get(url,success,error);
 }

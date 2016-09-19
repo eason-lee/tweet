@@ -16,11 +16,7 @@ def plaza_view():
     u = current_user()
     u.guanzhu_count = len(u.list_guanzhu())
     u.fans_count = len(u.list_fans())
-    tweets = Tweet.query.all()
-    t1 = Tweet.query.filter_by(id=1).first()
-    tweets.remove(t1)
-    tweets.sort(key=lambda t: t.created_time,reverse=True)
-    tweets = tweets[:12]
+    tweets = Tweet.query.order_by('created_time DESC' ).limit(12).all()
     for t in tweets:
         t.comments.sort(key=lambda c: c.created_time, reverse=True)
         t.comments = t.comments[:6]

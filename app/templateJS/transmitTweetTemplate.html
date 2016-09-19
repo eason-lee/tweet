@@ -33,11 +33,10 @@
             </div>
             {{ else }}
              <div class="my-transmit-bottom">
-              <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
-              <button  class="button-tweet-praise my-button button btn btn-success"  data-id="{{did}}" value="{{dpraise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{dpraise }} </button>
-              <button id="id-button-transmit-{{did}}" class="button-tweet-transmit my-button button btn btn-info"  data-id="{{did}}" value="{{dtransmit_count}}" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-new-window"></span> {{ dtransmit_count }} </button>
-              <button id="id-button-comment-{{did}}" class="button-tweet-comment my-button button btn btn-primary" data-id="{{did}}" value="{{dcomments_count}}" data-toggle="collapse" data-target="#collapseExample-{{did}}" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-comment"> </span> {{ dcomments_count }} </button>
+              <button type="button" class="my-transmit-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+              <button  class="button-tweet-praise my-transmit-button button btn btn-success"  data-id="{{did}}" value="{{dpraise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{dpraise }} </button>
+              <button id="id-button-transmit-{{did}}" class="button-tweet-transmit my-transmit-button button btn btn-info"  data-id="{{did}}" value="{{dtransmit_count}}" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-new-window"></span> {{ dtransmit_count }} </button>
+              <button id="id-button-comment-{{did}}" class="button-tweet-comment my-transmit-button button btn btn-primary" data-id="{{did}}" value="{{dcomments_count}}" data-toggle="collapse" data-target="#collapseExample-{{did}}" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-comment"> </span> {{ dcomments_count }} </button>
             </div>
             {{ /if }}
-
     </div>

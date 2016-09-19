@@ -73,14 +73,19 @@
             updateUserData();
         });
         // 鼠标滚动到底部自动加载微博
-        $(window).scroll(function() {
-            var scrollTop = $(this).scrollTop();
-            var scrollHeight = $(document).height();
-            var windowHeight = $(this).height();
-            if(scrollTop + windowHeight == scrollHeight){
-                log('到底了')
-                loadTweets();
-            }
+        // $(window).on('scroll',function() {
+        //     var scrollTop = $(this).scrollTop();
+        //     var scrollHeight = $(document).height();
+        //     var windowHeight = $(this).height();
+        //     if(scrollTop + windowHeight == scrollHeight){
+        //         log('到底了')
+        //         loadTweets();
+        //     }
+        // });
+        // 按钮加载更多微博
+        $('.button-tweet-loadTweets').on('click', function() {
+          var page_id = $(this).data('id')
+          loadTweets(page_id);
         });
 
     };

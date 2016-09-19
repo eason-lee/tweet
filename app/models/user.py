@@ -74,7 +74,6 @@ class User(db.Model, UserMixin,ReprMixin):
         password = form.get('password', '')
         username_equals = self.username == username
         password_equals = self.verify_password(password)
-        print('validate auth', username, password, username_equals, password_equals)
         return username_equals and password_equals
 
     def save(self):

@@ -84,6 +84,12 @@ body{
     display: flex;
 }
 
+.my-div-comment-transmit {
+    display: flex;
+    position: relative;
+    top: 31px;
+}
+
 
 .my-tweet-portrait {
     width:100%;
@@ -206,6 +212,7 @@ body{
 }
 
 .my-transmit-bottom {
+    display: flex;
     background-color: white;
     position: relative;
     top: 34px;
@@ -247,4 +254,11 @@ body{
 
 #id-input-nicheng {
     width: 266px;
+}
+
+.button-tweet-loadTweets {
+    width: 100%;
+    color: #2b2828;
+    background-color: rgba(91, 192, 222, 0);
+    border-color: rgba(70, 184, 218, 0);
 }

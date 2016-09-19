@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 log_code.txt
 __pycache__
+*.sqlite

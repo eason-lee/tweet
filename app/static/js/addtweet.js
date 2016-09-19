@@ -1,8 +1,9 @@
 // 添加微博到页面
   var insertTweet = function(tweet,user_id) {
+      log('添加微博当前用户id',user_id)
+      log('添加微博weibo用户id',tweet.user_id)
       var t = tweet;
       var time = formatTime(t.created_time);
-      log('图片url',t.image);
       if(t.image != '') {
           var image = t.image.split('\n');
       } else {
@@ -19,10 +20,8 @@
           current_user: user_id,
       };
       log('data',data)
-      var tweet = template('addTweetTemplate', data);
-      $('.my-connect').prepend(tweet);
-      $('#id-input-tweet').val("")
-      $('#id-input-file').val("")
+      var temp = template('addTweetTemplate', data);
+      return temp
   };
   // 添加微博
   var addNewTweet = function() {
@@ -42,7 +41,10 @@
           var success = function (r) {
             log('login, ', r);
             if(r.success) {
-                insertTweet(r.data,r.user_id);
+                var tem = insertTweet(r.data,r.user_id);
+                $('.my-connect').prepend(tem);
+                $('#id-input-tweet').val("");
+                $('#id-input-file').val("");
             } else {
                 log(r.message);
             }

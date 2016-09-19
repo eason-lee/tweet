@@ -163,13 +163,38 @@
                                       <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
                                       <button  class=" my-button button btn btn-success"  data-id="{{t.id}}" value="{{tpraise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{ t.praise }} </button>
                                       <button  class=" my-button button btn btn-info"  data-id="{{t.id}}"  data-target="#myModal"><span class="glyphicon glyphicon-new-window"></span> {{ t.transmit_count }} </button>
-                                      <button  class="button-tweet-comment my-button button btn btn-primary" data-id="{{t.id}}" data-toggle="collapse" data-target="#collapseExample-{{t.id}}" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-comment"></span> {{ t.comments_count }} </button>
+                                      <button  class="button-tweet-comment my-button button btn btn-primary" > <span class="glyphicon glyphicon-comment"></span> {{ t.comments_count }} </button>
                                   </div>
                                 </div>
-                                <div  class="my-transmit-bottom">
-                                    <button class='button-tweet-edit my-transmit-button button btn btn-info'data-id='{{t.id}}'>编辑</button>
-                                    <button class='button-tweet-delete my-transmit-button button btn btn-danger'data-id="{{t.id}}">删除</button>
+                                {% if t.user_id == user.id %}
+                                <div class="my-transmit-bottom-current">
+                                    <button class='button-tweet-edit my-transmit-button button btn btn-info' data-id='{{t.id}}'>编辑</button>
+                                    <button class='button-tweet-delete my-transmit-button button btn btn-danger' data-id="{{t.id}}">删除</button>
                                 </div>
+                                {% else %}
+                                <div class="my-div-comment-transmit">
+                                    <div class="collapse" id="collapseExample-{{t.id}}">
+                                        <div class="well">
+                                            <input id="id-input-comment-{{t.id}}"  autocomplete="off" class="my-input-warning" type="text">
+                                            <button class='calss-button-comment my-button button btn btn-default'data-id='{{t.id}}'>发布</button>
+                                            <div id = "id-div-comments-{{t.id}}">
+                                                {% for c in t.comments %}
+                                                    <p class="p-name">{{c.user.nicheng}} - {{c.created_time|format_time}} </p>
+                                                    <p> {{c.comment}} </p>
+                                                    <br>
+                                                {% endfor %}
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                 <div class="my-transmit-bottom">
+                                  <button type="button" class="my-transmit-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button>
+                                  <button  class="button-tweet-praise my-transmit-button button btn btn-success"  data-id="{{t.id}}" value="{{t.praise}}"><span class="glyphicon glyphicon-thumbs-up"></span> {{t.praise }} </button>
+                                  <button id="id-button-transmit-{{t.id}}" class="button-tweet-transmit my-transmit-button button btn btn-info"  data-id="{{t.id}}" value="{{t.transmit_count}}" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-new-window"></span> {{ t.transmit_count }} </button>
+                                  <button id="id-button-comment-{{t.id}}" class="button-tweet-comment my-transmit-button button btn btn-primary" data-id="{{t.id}}" value="{{t.comments_count}}" data-toggle="collapse" data-target="#collapseExample-{{t.id}}" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-comment"> </span> {{ t.comments_count }} </button>
+                                </div>
+                                {% endif %}
+
                             </div>
                         {% endif %}
                 {% endfor %}
@@ -228,5 +253,6 @@
           </div>
       </div>
   </div>
+  <button class='button-tweet-loadTweets  button btn btn-info' data-id="1">更多</button>
 </body>
 </html>

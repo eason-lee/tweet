@@ -29,6 +29,7 @@ def tweet_add():
     r = dict(
         success=True,
         data=t.json(),
+        user_id=u.id,
     )
     return jsonify(r)
 
@@ -66,7 +67,6 @@ def tweet_addComment(tweet_id):
     c.user = u
     c.save()
     t.save()
-    # print('comment',c.comment)
     r = {
         'success': True,
         'data': c.json(),
@@ -117,32 +117,58 @@ def tweet_transmit(tweet_id):
     return jsonify(r)
 
 # 加载微博
-@main.route('/tweet/loads')
-def tweet_loads():
+@main.route('/tweet/loads/<page_id>')
+def tweet_loads(page_id):
     u = current_user()
-    ts = Tweet.query.all()
-    ts.sort(key=lambda t: t.created_time, reverse=True)
-    ts = next(cutList(ts,12))
+    if page_id == '1':
+        ts = timeline_tweets(u)
+    elif page_id == '2':
+        ts = plaza_tweets()
     for t in ts:
         if t.transmit != '0':
             bt = Tweet.query.filter_by(id=int(t.transmit)).first()
             t.tweet = bt.json()
-            bu = User.query.filter_by(id=bt.user_id).first()
+            bu = User.query.filter_by(id=t.user_id).first()
             t.nicheng = bu.nicheng
             t.portrait = bu.portrait
-    print('ts', ts)
+        else:
+            tu = User.query.filter_by(id=t.user_id).first()
+            t.nicheng = tu.nicheng
+            t.portrait = tu.portrait
     r = dict(
         success=True,
         data=[t.json() for t in ts],
         user_id = u.id,
     )
-    log('data',r['data'])
-    print('data',r['data'])
     return jsonify(r)
 
-def cutList(t,count):
-    if len(t) < count:
-        return t
+# 个人主页的微博
+def timeline_tweets(u):
+    if u.guanzhu == [] or u.guanzhu is None:
+        ts = u.tweets
     else:
-        s = (t[n:n+count] for n in range(count,len(t)+1,count))
-        return s
+        guanzhu_id = u.guanzhu.split('\n')
+        gid = [ int(x) for x in guanzhu_id if x != '']
+        guanzhu_tweets = Tweet.query.filter(Tweet.user_id.in_(gid)).all()
+        tweets = u.tweets + guanzhu_tweets
+        ts_count = len(tweets)
+        if ts_count > 12:
+            n = next(n for n in range(12, ts_count + 1, 12))
+        else:
+            n = 12
+        gid = []
+        for t in tweets:
+            gid.append(t.id)
+        ts = Tweet.query.filter(Tweet.id.in_(gid)).order_by('created_time DESC').limit(n).offset(12).all()
+    return ts
+
+
+# 广场的微博
+def plaza_tweets():
+    ts_count = Tweet.query.count()
+    if ts_count > 12:
+        n = next(n for n in range(12, ts_count + 1, 12))
+    else:
+        n = 12
+    ts = Tweet.query.order_by('created_time DESC').limit(n).offset(12).all()
+    return ts

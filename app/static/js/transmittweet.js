@@ -11,7 +11,8 @@ var transmitTweet = function() {
     var success = function (r) {
       log('login, ', r);
       if(r.success) {
-          insertTransmit(r.data,r.tweet,r.user_id);
+          var temp = insertTransmit(r.data,r.tweet,r.user_id);
+          $('.my-connect').prepend(temp);
       } else {
           log('转发失败');
       }
@@ -43,7 +44,7 @@ var insertTransmit = function(data,tweet,user_id) {
         dpraise: d.praise,
         dcomment: d.comments_count,
         dtransmit: d.transmit_count,
-        tcontent: d.content,
+        tcontent: t.content,
         timage: timage,
         tnicheng: t.nicheng,
         ttime: ttime,
@@ -54,6 +55,7 @@ var insertTransmit = function(data,tweet,user_id) {
         current_user: user_id,
     };
     log('datas',datas)
-    var tweet = template('transmitTweetTemplate', datas);
-    $('.my-connect').prepend(tweet);
+    var temp = template('transmitTweetTemplate', datas);
+    return temp
+
 }

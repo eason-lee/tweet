@@ -174,7 +174,7 @@
 
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
-    /*v:3*/
+    /*v:1*/
 template('addTweetTemplate',function($data,$filename
 /**/) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,uportrait=$data.uportrait,user_id=$data.user_id,unicheng=$data.unicheng,time=$data.time,content=$data.content,$each=$utils.$each,image=$data.image,value=$data.value,i=$data.i,id=$data.id,current_user=$data.current_user,praise=$data.praise,transmit_count=$data.transmit_count,comments_count=$data.comments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-content-tweet"> <div class="my-tweet-portrait"> <img src=';
@@ -239,7 +239,7 @@ $out+=' </button> ';
 }
 $out+=' </div> ';
 return new String($out);
-});/*v:6*/
+});/*v:1*/
 template('transmitTweetTemplate',function($data,$filename
 /**/) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,dportrait=$data.dportrait,did=$data.did,dnicheng=$data.dnicheng,dtime=$data.dtime,dcontent=$data.dcontent,tnicheng=$data.tnicheng,ttime=$data.ttime,tcontent=$data.tcontent,$each=$utils.$each,timage=$data.timage,value=$data.value,i=$data.i,tid=$data.tid,tpraise=$data.tpraise,ttransmit=$data.ttransmit,tcomments=$data.tcomments,user_id=$data.user_id,current_user=$data.current_user,dpraise=$data.dpraise,dtransmit_count=$data.dtransmit_count,dcomments_count=$data.dcomments_count,$out='';$out+=' <div id="id-div-tweet-body" class="my-tweet-transmit"> <div class="my-transmit-top"> <div class="my-tweet-transmit-portrait-1"> <img src=';
@@ -290,7 +290,7 @@ $out+='\'>编辑</button> <button class=\'button-tweet-delete my-transmit-button
 $out+=$escape(did);
 $out+='">删除</button> </div> ';
 }else{
-$out+=' <div class="my-transmit-bottom"> <button type="button" class="my-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button> <button class="button-tweet-praise my-button button btn btn-success" data-id="';
+$out+=' <div class="my-transmit-bottom"> <button type="button" class="my-transmit-button btn btn-warning"> <span class="glyphicon glyphicon-star-empty"></span> 收藏 </button> <button class="button-tweet-praise my-transmit-button button btn btn-success" data-id="';
 $out+=$escape(did);
 $out+='" value="';
 $out+=$escape(dpraise);
@@ -298,7 +298,7 @@ $out+='"><span class="glyphicon glyphicon-thumbs-up"></span> ';
 $out+=$escape(dpraise);
 $out+=' </button> <button id="id-button-transmit-';
 $out+=$escape(did);
-$out+='" class="button-tweet-transmit my-button button btn btn-info" data-id="';
+$out+='" class="button-tweet-transmit my-transmit-button button btn btn-info" data-id="';
 $out+=$escape(did);
 $out+='" value="';
 $out+=$escape(dtransmit_count);
@@ -306,7 +306,7 @@ $out+='" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyp
 $out+=$escape(dtransmit_count);
 $out+=' </button> <button id="id-button-comment-';
 $out+=$escape(did);
-$out+='" class="button-tweet-comment my-button button btn btn-primary" data-id="';
+$out+='" class="button-tweet-comment my-transmit-button button btn btn-primary" data-id="';
 $out+=$escape(did);
 $out+='" value="';
 $out+=$escape(dcomments_count);
