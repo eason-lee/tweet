@@ -8,12 +8,12 @@ class Tweet(db.Model, ReprMixin):
 
     __tablename__ = 'tweets'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String())
-    image = db.Column(db.Text())
+    content = db.Column(db.String(128))
+    image = db.Column(db.Text(128))
     created_time = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     praise = db.Column(db.Integer,default=0)
-    transmit = db.Column(db.String())
+    transmit = db.Column(db.String(128))
     transmit_count = db.Column(db.Integer, default=0)
     comments = db.relationship('Comment',backref='tweet')
     comments_count = db.Column(db.Integer,default=0)

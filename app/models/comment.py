@@ -6,7 +6,7 @@ import time
 class Comment(db.Model,ReprMixin):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.String())
+    comment = db.Column(db.String(128))
     created_time = db.Column(db.Integer, default=0)
     tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

@@ -10,13 +10,13 @@ import time
 class User(db.Model, UserMixin,ReprMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String())
+    username = db.Column(db.String(128))
     password_hash = db.Column(db.String(128))
     created_time = db.Column(db.Integer)
-    portrait = db.Column(db.String())
-    nicheng = db.Column(db.String())
-    guanzhu = db.Column(db.Text())
-    fans = db.Column(db.Text())
+    portrait = db.Column(db.String(128))
+    nicheng = db.Column(db.String(128))
+    guanzhu = db.Column(db.Text(128))
+    fans = db.Column(db.Text(128))
     # 外键关联
     tweets = db.relationship('Tweet', backref='user')
     comments = db.relationship('Comment', backref='user')
