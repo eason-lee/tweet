@@ -16,9 +16,6 @@ var upload = function(file) {
                 } else {
                     alertify.error('上传失败',file.name);
                 }
-            error: function(err) {
-                log(err);
-            }
           }
         });
     };
