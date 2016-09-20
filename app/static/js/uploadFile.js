@@ -2,7 +2,7 @@ var upload = function(file) {
         // 要用一个 formdata 对象来装 file
         var fd = new FormData();
         fd.append('uploaded', file);
-
+        log('file',file)
         $.ajax({
             url: '/api/upload',
             method: 'post',

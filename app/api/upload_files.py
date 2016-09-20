@@ -25,5 +25,5 @@ def upload_file():
         r['message'] = filename
     else:
         r['success'] = False
-
+    print('r',r)
     return jsonify(r)
