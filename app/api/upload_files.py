@@ -1,5 +1,6 @@
 from .. import UPLOAD_FOLDER
 from . import main
+from . import log
 
 from flask import jsonify
 from flask import request
@@ -26,4 +27,5 @@ def upload_file():
     else:
         r['success'] = False
     print('r',r)
+    log('r',r)
     return jsonify(r)
