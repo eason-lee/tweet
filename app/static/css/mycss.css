@@ -273,4 +273,6 @@ body{
     color: #2b2828;
     background-color: rgba(91, 192, 222, 0);
     border-color: rgba(70, 184, 218, 0);
+    position:fixed;
+    bottom:0;
 }
