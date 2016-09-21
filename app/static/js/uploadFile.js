@@ -20,8 +20,6 @@ var upload = function(file) {
                 //     alertify.error('上传失败',file.name);
                 // }
             }
-            error: function (err) {
-                alertify.error('上传失败',file.name);
-            }
+            
         });
     };
