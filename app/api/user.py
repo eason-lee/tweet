@@ -88,7 +88,7 @@ def user_addthings():
     u.updates(form)
     r = dict(
         success=True,
-        data=u.json(),
+        data='更新成功',
     )
     return jsonify(r)
 

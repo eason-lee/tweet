@@ -2,7 +2,6 @@ var upload = function(file) {
         // 要用一个 formdata 对象来装 file
         var fd = new FormData();
         fd.append('uploaded', file);
-        log('file',file)
         $.ajax({
             url: '/api/upload',
             method: 'post',
@@ -11,7 +10,6 @@ var upload = function(file) {
             processData: false,
             data: fd,
             success: function(r) {
-                log('r',r)
                 alertify.success('上传成功', file.name);
                 // if(r.success) {
                 //     alertify.success('上传成功', file.name);
@@ -20,6 +18,6 @@ var upload = function(file) {
                 //     alertify.error('上传失败',file.name);
                 // }
             }
-            
+
         });
     };

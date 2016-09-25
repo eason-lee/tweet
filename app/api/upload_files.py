@@ -1,11 +1,4 @@
-from .. import UPLOAD_FOLDER
-from . import main
-from . import log
-
-from flask import jsonify
-from flask import request
-import os
-from werkzeug import secure_filename
+from . import *
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 

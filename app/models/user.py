@@ -1,10 +1,9 @@
-from . import db
-from . import ReprMixin
+from . import *
 from .. import login_manager
 from  werkzeug.security import generate_password_hash
 from  werkzeug.security import check_password_hash
 from flask_login import UserMixin
-import time
+
 
 
 class User(db.Model, UserMixin,ReprMixin):
@@ -36,7 +35,7 @@ class User(db.Model, UserMixin,ReprMixin):
         self.guanzhu = form.get('guanzhu','')
         # 在初始化数据的时候写入 unixtime
         # 这样不依赖数据库的功能, 可以通用
-        self.created_time = time.time()
+        self.created_time = timestamp()
 
 
     @property
@@ -66,8 +65,6 @@ class User(db.Model, UserMixin,ReprMixin):
         ]
         return b
 
-    # def cread_relation_table():
-
 
     def validate_auth(self, form):
         username = form.get('username', '')
@@ -76,13 +73,6 @@ class User(db.Model, UserMixin,ReprMixin):
         password_equals = self.verify_password(password)
         return username_equals and password_equals
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
     def updates(self,form):
         User.query.filter_by(id = self.id).update(form)

@@ -1,7 +1,6 @@
-from . import db
-from . import ReprMixin
+from . import *
 
-import time
+
 
 class Comment(db.Model,ReprMixin):
     __tablename__ = 'comments'
@@ -14,7 +13,7 @@ class Comment(db.Model,ReprMixin):
     def __init__(self, form):
         self.comment = form.get('comment', '')
         # self.created_time = time.strftime('%Y-%m-%d %H:%M:%S')
-        self.created_time = time.time()
+        self.created_time = timestamp()
 
     def json(self):
         extra = dict(

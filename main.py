@@ -16,7 +16,7 @@ def rebuild_db():
 def run():
     config = dict(
         # host = '0.0.0.0',
-        # port = 80,
+        # port = 3000,
         debug=True,
     )
     init_app().run(**config)

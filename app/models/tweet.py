@@ -1,7 +1,4 @@
-from . import db
-from . import ReprMixin
-
-import time
+from . import *
 
 
 class Tweet(db.Model, ReprMixin):
@@ -27,7 +24,7 @@ class Tweet(db.Model, ReprMixin):
         transmit_count = form.get('transmit_count', 0)
         comments_count = form.get('comments_count',0)
         self.content = content
-        self.created_time = time.time()
+        self.created_time = timestamp()
         self.praise = praise
         self.image = image
         self.transmit = transmit
@@ -48,13 +45,6 @@ class Tweet(db.Model, ReprMixin):
         ]
         return b
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
     def list_image(self):
         image = ''

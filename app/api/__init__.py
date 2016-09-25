@@ -3,14 +3,18 @@ from flask import url_for
 from flask import jsonify
 from flask import session
 from flask import Blueprint
-import time
+from flask import abort
 
+import time
+import os
 import inspect
 from termcolor import colored
 from functools import wraps
+from werkzeug import secure_filename
 
 from ..models import User
-
+from ..models import Tweet
+from ..models import Comment
 # api 是蓝图的名字
 main = Blueprint('api', __name__)
 

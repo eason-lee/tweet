@@ -1,7 +1,5 @@
 // 添加微博到页面
   var insertTweet = function(tweet,user_id) {
-      log('添加微博当前用户id',user_id)
-      log('添加微博weibo用户id',tweet.user_id)
       var t = tweet;
       var time = formatTime(t.created_time);
       if(t.image != '') {
@@ -19,9 +17,8 @@
           user_id: t.user_id,
           current_user: user_id,
       };
-      log('data',data)
       var temp = template('addTweetTemplate', data);
-      return temp
+      return temp;
   };
   // 添加微博
   var addNewTweet = function() {
@@ -53,11 +50,11 @@
             log(err);
           };
           vip.tweetAdd(form, success, error);
-          image_urls = new Array();
+          image_urls = new Array()
       }
   };
 
-var image_urls = new Array();
+var image_urls = new Array()
 
 var sendPicture = function () {
     var fileTag =$('#id-input-file')[0];
@@ -69,5 +66,5 @@ var sendPicture = function () {
         upload(file);
         var image_url = '/static/image/' + file.name;
         image_urls.push(image_url);
-    };
+    }
 };
