@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>登录</title>
     <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/mycss.css">
     <script src="/static/js/jquery-3.0.0.min.js"></script>
     <script src="/static/js/api.js"></script>
     <script>
@@ -101,6 +102,10 @@
             $('#id-button-login').on('click', function(){
                 login();
             });
+            $('id-button-visitor').on('click', function(){
+                login();
+            });
+
         };
 
         var __main = function() {
@@ -115,7 +120,7 @@
         });
     </script>
 </head>
-<body>
+<body class="login-background">
     <div class="gua-container">
         <div class="gua-main">
             <div class="gua-header">
@@ -148,10 +153,10 @@
                         </div>
                     </div>
                     <button id="id-button-login" class="gua-button-big" type="submit">进入</button>
+                    <button id="id-button-visitor" class="gua-button-big" type="submit">游客进入</button>
                     <div class="gua-remember float-left">
                         <!-- <label><input id="gua-id-remember" type="checkbox" name="remember" />记住我</label> -->
                     </div>
-                    <a class="float-right" href="#">忘记密码？(现在还没做功能 点了也没用)</a>
                 </div>
             </div>
         </div>
