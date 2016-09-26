@@ -66,6 +66,18 @@ a {
     font-size: 16px;
 }
 
+.gua-button-visitor {
+    width: 100%;
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    background: none;
+}
+
 .float-left {
     float: left;
 }
