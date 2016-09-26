@@ -229,19 +229,10 @@
             </div>
       </div>
       <div class="my-timeline-sidebar">
-          <div class="">
-              <div class="">
+          <div class="my-sidebar-connect">
                 <img src={{user.portrait}} alt="..." width="150" height="150" class="img-thumbnail">
-                <h4> About </h4>
-                <p> <em>{{user.nicheng}}</em> </p>
-                <p> <em>关注：{{ user.guanzhu_count }}  粉丝: {{ user.fans_count }} </em></p>
-              </div>
-              <div class="sidebar-module">
-                <h4>GitHub</h4>
-                <ol class="list-unstyled">
-                  <li><a href="https://github.com/eason-lee/tweet">GitHub</a></li>
-                </ol>
-              </div>
+                <h4> {{user.nicheng}} </h4>
+                <h5> <em>关注：{{ user.guanzhu_count }}  粉丝: {{ user.fans_count }} </em></h5>
           </div>
       </div>
   </div>

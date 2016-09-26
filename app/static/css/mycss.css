@@ -1,11 +1,11 @@
 
-/*body{
-    background-color: rgba(56, 125, 112, 0.16);
-}*/
+body{
+    background-color: #eee;
+}
 
 .login-background {
     background-image: url(../image/001.jpg);
-    background-size: 100% 225%;;
+    background-size: 100% 215%;;
 }
 
 .my-navbar-color {
@@ -38,7 +38,7 @@
     width: 588px;
 }
 .my-sidebar {
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     height: 400px;
     margin: 44px;
     margin-left: 353px;
@@ -101,8 +101,8 @@
     height: 84px;
 }
 
-.my-portrait {
-
+.my-sidebar-connect {
+    text-align: center;
 }
 
 .my-tweet-guanzhu {

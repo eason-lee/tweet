@@ -77,7 +77,12 @@
         };
 
         var login = function(){
-            var form = loginForm();
+            if(arguments.length > 0) {
+                var form = arguments[0]
+            } else {
+                var form = loginForm();
+            }
+
             var success = function (r) {
                 log('login, ', r);
                 if(r.success) {
@@ -102,8 +107,12 @@
             $('#id-button-login').on('click', function(){
                 login();
             });
-            $('id-button-visitor').on('click', function(){
-                login();
+            $('#id-button-visitor').on('click', function(){
+                var form = {
+                    username: 'youke',
+                    password: '123456',
+                }
+                login(form);
             });
 
         };
@@ -153,11 +162,11 @@
                         </div>
                     </div>
                     <button id="id-button-login" class="gua-button-big" type="submit">进入</button>
-                    <button id="id-button-visitor" class="gua-button-big" type="submit">游客进入</button>
                     <div class="gua-remember float-left">
                         <!-- <label><input id="gua-id-remember" type="checkbox" name="remember" />记住我</label> -->
                     </div>
                 </div>
+                <button id="id-button-visitor" class="gua-button-big" type="submit">游客进入</button>
             </div>
         </div>
     </div>
