@@ -1,11 +1,11 @@
 
 body{
-    background-color: #eee;
+    background-color: #f9f9f9;
 }
 
 .login-background {
     background-image: url(../image/001.jpg);
-    background-size: 100% 215%;;
+    background-size: 100% 215%;
 }
 
 .my-navbar-color {
