@@ -1,11 +1,17 @@
 
 body{
-    background-color: #f9f9f9;
+    background-image: url(../image/010223.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
 }
 
 .login-background {
     background-image: url(../image/001.jpg);
-    background-size: 100% 215%;
+    /*background-size: 100% 215%;*/
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
 }
 
 .my-navbar-color {
